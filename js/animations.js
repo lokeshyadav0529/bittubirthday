@@ -1,0 +1,7 @@
+// Lightweight native browser effects: petals and canvas particles.
+(() => {
+ const layer=document.querySelector('.petals');
+ for(let i=0;i<22;i++){const p=document.createElement('span');p.className='petal';p.textContent=['✿','❀','♥'][i%3];p.style.left=((i*37)%100)+'%';p.style.animationDelay=(-(i%9)*2.1)+'s';p.style.animationDuration=(15+(i%7)*2)+'s';p.style.fontSize=(9+(i%5)*3)+'px';layer.append(p)}
+ window.burstHearts=(x=innerWidth*.5,y=innerHeight*.48)=>{for(let i=0;i<36;i++){const h=document.createElement('span');h.textContent=i%3?'✦':'♥';h.style.cssText=`position:fixed;left:${x}px;top:${y}px;z-index:10;color:${i%2?'#e9c77e':'#d64b67'};pointer-events:none;font-size:${8+Math.random()*13}px;transition:transform 1.2s ease-out,opacity 1.2s;`;document.body.append(h);requestAnimationFrame(()=>{h.style.transform=`translate(${(Math.random()-.5)*480}px,${(Math.random()-.7)*450}px) rotate(${Math.random()*500}deg)`;h.style.opacity='0'});setTimeout(()=>h.remove(),1300)}};
+ window.spawnCrumbs=(x,y)=>{for(let i=0;i<22;i++){const c=document.createElement('i');c.style.cssText=`position:fixed;z-index:7;left:${x}px;top:${y}px;width:${3+Math.random()*5}px;height:${3+Math.random()*5}px;border-radius:50%;background:${i%2?'#9c2941':'#f0d29b'};pointer-events:none;transition:transform .8s,opacity .8s`;document.body.append(c);requestAnimationFrame(()=>{c.style.transform=`translate(${(Math.random()-.5)*180}px,${Math.random()*100}px)`;c.style.opacity='0'});setTimeout(()=>c.remove(),850)}};
+})();
